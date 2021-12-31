@@ -22,6 +22,16 @@ services:
     ports:
       - "${ADMINER_PORT}:${ADMINER_PORT}"
 
+  backend:
+    build:
+      context: ./backend
+    command: "yarn start:dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+
 
 volumes:
   pg-data:
